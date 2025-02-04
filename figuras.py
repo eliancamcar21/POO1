@@ -1,4 +1,6 @@
-import math
+from math import sqrt
+from math import pi
+from math import tan
 
 def calculoPerimetro(numLados, lado):
     perimetro = numLados * lado
@@ -6,21 +8,20 @@ def calculoPerimetro(numLados, lado):
 
 def calculoArea(numLados, lado):
     if numLados == 3:
-        area = (lado ** 2) * (math.sqrt(3) / 4) 
+        area = (lado ** 2) * (sqrt(3) / 4) 
     elif numLados == 4:
         area = lado ** 2 
-    elif numLados == 5:
-        area = (5 / 4) * lado ** 2 * (1 / math.tan(math.pi / 5))
-    else:
-        area = 0  
+    elif numLados >= 5:
+        apotema = lado / (2 * tan(pi / numLados))
+        area = (perimetro * apotema)/2
     return area
 
 
 def mostrarResultado(numLados, perimetro, area):
-    print("El perímetro de una figura de",numLados,"lados es igual a",perimetro,"y el área es igual a",area)
+    print("El perímetro de una figura de",numLados,"lados es igual a",perimetro,"y el área es igual a",area,"unidades")
 
 numLados = int(input("Ingrese el número de lados de la figura: "))
-lado = int(input("Ingrese el tamaño del lado: "))
+lado = float(input("Ingrese el tamaño del lado: "))
 
 perimetro = calculoPerimetro(numLados, lado)
 area = calculoArea(numLados, lado)
