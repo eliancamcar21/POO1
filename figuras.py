@@ -6,19 +6,17 @@ def calculoPerimetro(numLados, lado):
     perimetro = numLados * lado
     return perimetro
 
-def calculoArea(numLados, lado):
-    if numLados == 3:
-        area = (lado ** 2) * (sqrt(3) / 4) 
-    elif numLados == 4:
-        area = lado ** 2 
-    elif numLados >= 5:
-        apotema = lado / (2 * tan(pi / numLados))
-        area = (perimetro * apotema)/2
+def calculoArea(numLados, lado,):
+    theta = pi / numLados
+    apotema = lado / (2 * tan(theta))
+    area = (perimetro * apotema)/2
     return area
 
-
 def mostrarResultado(numLados, perimetro, area):
-    print("El perímetro de una figura de",numLados,"lados es igual a",perimetro,"y el área es igual a",area,"unidades")
+    if numLados <= 1:
+        print("No existen poligonos de un solo lado")
+    else:
+        print("El perímetro de una figura de",numLados,"lados es igual a",perimetro,"y el área es igual a",area,"unidades")
 
 numLados = int(input("Ingrese el número de lados de la figura: "))
 lado = float(input("Ingrese el tamaño del lado: "))
